@@ -69,17 +69,20 @@ const RoomIdPage = () => {
       };
 
     return (
-        <BackgroundLines className='flex h-screen items-center justify-between px-10 w-full'>
-            <div className='mr-auto pl-10'>
-                <FileUpload onChange={handleFileUpload} />
+        <BackgroundLines className="flex h-screen w-full flex-col items-center justify-center px-10 md:flex-row md:justify-between">
+    <div className="w-full px-10 md:w-auto md:mr-auto">
+        <FileUpload onChange={handleFileUpload} />
+    </div>
+    <div className="w-full px-10 text-center md:w-auto md:mr-auto">
+        <h1 className="pb-4 font-sans font-bold">Room ID: {roomId}</h1>
+        {uploadedFiles.map((file, index) => (
+            <div className="pb-4" key={index}>
+                <FileCard file={file} />
             </div>
-            <div className='mr-auto'>
-                <h1 className='pb-4 font-sans font-bold'>Room ID: {roomId}</h1>
-                {uploadedFiles.map((file, index) => (
-                        <div className='pb-4' key={index}><FileCard file={uploadedFiles[index]}/></div>
-                    ))}
-            </div>
-        </BackgroundLines>
+        ))}
+    </div>
+</BackgroundLines>
+
     );
 }
 
