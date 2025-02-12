@@ -74,7 +74,7 @@ const RoomIdPage = () => {
         <FileUpload onChange={handleFileUpload} />
     </div>
     <div className="w-full px-10 text-center md:w-auto md:mr-auto">
-        <h1 className="pb-4 font-sans font-bold">Room ID: {roomId}</h1>
+        <h1 className="pb-4 font-sans font-bold text-white">Room ID: {roomId}</h1>
         {uploadedFiles.map((file, index) => (
             <div className="pb-4" key={index}>
                 <FileCard file={file} />
