@@ -18,19 +18,19 @@ const FileCard: React.FC<FileCardProps> = ({ file }) => {
 
     // }
   return (
-    <div className="flex items-center justify-between bg-white dark:bg-gray-900 border border-gray-300 dark:border-gray-700 rounded-lg p-3 shadow-md w-full max-w-screen-md">
+    <div className="flex items-center justify-betweenbg-gray-900 border border-gray-700 rounded-lg p-3 shadow-md w-full max-w-screen-md">
       {/* File Info */}
       <div className="flex items-center gap-3">
-        <div className="w-12 h-12 flex items-center justify-center bg-gray-200 dark:bg-gray-800 rounded-md">
-          <span className="text-gray-600 dark:text-gray-400 text-sm">
+        <div className="w-12 h-12 flex items-center justify-center bg-gray-800 rounded-md">
+          <span className="text-gray-400 text-sm">
             {file.fileType.split("/")[1]?.toUpperCase() || "FILE"}
           </span>
         </div>
         <div className="flex flex-col">
-          <p className="text-sm font-medium text-gray-900 dark:text-gray-100 truncate max-w-[150px]">
+          <p className="text-sm font-medium text-gray-100 truncate max-w-[150px]">
             {file.fileName}
           </p>
-          <p className="text-xs text-gray-500 dark:text-gray-400">
+          <p className="text-xs text-gray-400">
             {(file.fileSize / (1024 * 1024)).toFixed(2)} MB
           </p>
         </div>

@@ -21,7 +21,7 @@ export default function AuroraBackgroundDemo() {
         }}
         className="relative flex flex-col gap-4 items-center justify-center px-4"
       >
-        <div className="text-3xl md:text-7xl font-bold dark:text-gray-300 text-center">
+        <div className="text-3xl md:text-7xl font-bold text-gray-300 text-center">
           Enter Room ID
         </div>
         <div className="flex gap-8 rounded-md">

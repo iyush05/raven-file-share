@@ -24,7 +24,7 @@ const RoomIdPage = () => {
             }
         }
         fetchFiles();
-    }, [uploadedFiles]);
+    }, [files]);
 
     const handleFileUpload = async (files: File[]) => {
         console.log("handle file triggered")
