@@ -5,27 +5,12 @@ import FileCard from '@/components/ui/fileCard';
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import axios from 'axios';
-import { PrismaClient } from '@prisma/client';
 
-interface RoomPageProps {
-    params:  { roomId: string } 
-}
-
-interface UploadFile {
-    roomId: string;
-    name: string;
-    size: number;
-    type: string;
-}
-
-
-const prisma = new PrismaClient();
 
 const RoomIdPage = () => {
 
     const roomId = useParams<{roomId:string}>().roomId;
     const [files, setFiles] = useState<File []>([]);
-    const [downloadUrl, setDownloadUrl] = useState<any[]>([]);
     const [uploadedFiles, setUploadedFiles] = useState([]);
         
     useEffect(() => {
@@ -39,7 +24,7 @@ const RoomIdPage = () => {
             }
         }
         fetchFiles();
-    }, [files]);
+    }, [uploadedFiles]);
 
     const handleFileUpload = async (files: File[]) => {
         console.log("handle file triggered")
@@ -66,17 +51,20 @@ const RoomIdPage = () => {
             //   });
 
             console.log('File uploaded successfully')
+            const res = await fetch(`/api/getFiles?folder=${roomId}`);
+                const data = await res.json();
+                if (data.files) setUploadedFiles(data.files);
             i++;
         } catch (error) {
             i++;
             console.error('File upload failed')
         }
         
-        const url = await axios.get(`api/getFiles/${roomId}/${files[i].name}`)
-        const fileUrl = url.data;
-        console.log(fileUrl);
-        setDownloadUrl((prevUrl) => [...prevUrl, ...fileUrl]);
-        console.log("uploaded files", uploadedFiles);
+        // const url = await axios.get(`api/getFiles/${roomId}/${files[i].name}`)
+        // const fileUrl = url.data;
+        // console.log(fileUrl);
+        // setDownloadUrl((prevUrl) => [...prevUrl, ...fileUrl]);
+        // console.log("uploaded files", uploadedFiles);
         
       };
 
