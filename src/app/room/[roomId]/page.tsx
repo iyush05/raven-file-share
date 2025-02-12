@@ -5,7 +5,7 @@ import FileCard from '@/components/ui/fileCard';
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import axios from 'axios';
-import { Prisma, PrismaClient } from '@prisma/client';
+import { PrismaClient } from '@prisma/client';
 
 interface RoomPageProps {
     params:  { roomId: string } 
@@ -25,7 +25,6 @@ const RoomIdPage = () => {
 
     const roomId = useParams<{roomId:string}>().roomId;
     const [files, setFiles] = useState<File []>([]);
-    const [uploadProgress, setUploadProgress] = useState(0);
     const [downloadUrl, setDownloadUrl] = useState<any[]>([]);
     const [uploadedFiles, setUploadedFiles] = useState([]);
         
@@ -68,7 +67,6 @@ const RoomIdPage = () => {
 
             console.log('File uploaded successfully')
             i++;
-            setUploadProgress(100);
         } catch (error) {
             i++;
             console.error('File upload failed')

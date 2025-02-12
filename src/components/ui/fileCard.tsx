@@ -1,7 +1,4 @@
 "use client";
-import { useState } from "react";
-import { XCircleIcon } from "@heroicons/react/24/solid";
-import axios from "axios" 
 interface FileCardProps {
   file: {
     fileName: string;

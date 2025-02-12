@@ -1,11 +1,6 @@
 import { PutObjectCommand, S3Client } from "@aws-sdk/client-s3"
 import { NextRequest, NextResponse } from "next/server";
-import { useEffect } from "react";
-import { useRouter } from "next/router"
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-import prisma from "@/lib/prisma";
-import { form } from "motion/react-client";
-import axios from "axios";
 
 const s3Client = new S3Client({
     region: process.env.AWS_REGION as string,
