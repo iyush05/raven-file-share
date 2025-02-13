@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Raven
+
+Raven is a web application designed to share files between devices. Built with **Next.js**, **TypeScript**, it integrates AWS S3 for file storage and provides a seamless user experience.
+
+## Features
+- Room-based file sharing system
+- Secure authentication
+- Supports **Docker** for easy deployment
+
+## Prerequisites
+Make sure you have the following installed:
+- [Node.js](https://nodejs.org/) (>= 18.x)
+- [Docker](https://www.docker.com/get-started) (optional for containerized setup)
 
 ## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### **1. Clone the Repository**
+```sh
+git clone https://github.com/iyush05/raven-file-share.git
+cd raven
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### **2. Install Dependencies**
+```sh
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### **3. Configure Environment Variables**
+Create a `.env` file in the root directory and set the necessary environment variables:
+```
+NEXT_PUBLIC_API_URL=http://localhost:3000/api
+AWS_ACCESS_KEY_ID=your_aws_key
+AWS_SECRET_ACCESS_KEY=your_aws_secret
+AWS_REGION=you_aws_server_region
+AWS_BUCKET_NAME=your_bucket_name
+```
+Modify values according to your setup.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+### **5. Start the Development Server**
+```sh
+npm run dev
+```
+The server should now be running at `http://localhost:3000`.
 
-To learn more about Next.js, take a look at the following resources:
+---
+## Running with Docker
+If you prefer running Raven using Docker, follow these steps:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### **1. Build the Docker Image**
+```sh
+docker build -t raven .
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### **2. Run the Container**
+```sh
+docker run -p 3000:3000 --env-file .env raven
+```
+This will start the application on `http://localhost:3000`.
 
-## Deploy on Vercel
+---
+## Contributing
+Feel free to open issues or submit pull requests to improve **Raven**!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## License
+[MIT](LICENSE)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
